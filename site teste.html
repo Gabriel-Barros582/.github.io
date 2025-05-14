@@ -1,0 +1,364 @@
+!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Associação Unindo Força</title>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <style>
+        body {
+            font-family: 'Inter', sans-serif;
+            scroll-behavior: smooth; /* Adiciona rolagem suave */
+        }
+        .destaque {
+            font-weight: 600;
+            text-decoration: underline;
+            text-decoration-color: #60a5fa; /* Cor do destaque em azul */
+        }
+        .contact-button {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            padding: 10px 20px;
+            border-radius: 5px;
+            text-decoration: none;
+            color: white;
+            font-weight: 500;
+            transition: background-color 0.3s ease;
+            margin: 5px;
+        }
+        .contact-button i {
+            margin-right: 8px;
+            font-size: 1.2em;
+        }
+        .email-button {
+            background-color: #dc3545; /* Vermelho */
+        }
+        .email-button:hover {
+            background-color: #c82333;
+        }
+        .instagram-button {
+            background: linear-gradient(45deg, #f09433 0%,#e5661d 25%,#dc2743 50%,#cc2366 75%,#bc1888 100%);
+        }
+        .instagram-button:hover {
+          background: linear-gradient(45deg, #ed821e 0%,#e05305 25%,#d61331 50%,#c11e59 75%,#b10777 100%);
+        }
+
+        .facebook-button {
+            background-color: #3b5998; /* Azul do Facebook */
+        }
+        .facebook-button:hover {
+            background-color: #2a4373;
+        }
+        .whatsapp-button {
+            background-color: #25d366; /* Verde do WhatsApp */
+        }
+        .whatsapp-button:hover {
+            background-color: #1a9e45;
+        }
+
+        /* Estilos para animação de entrada dos títulos */
+        .animated-title {
+            opacity: 0;
+            transform: translateY(20px);
+            transition: opacity 0.5s ease, transform 0.5s ease;
+        }
+
+        .animated-title.active {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        /* Estilos para animação de revelação na rolagem */
+        .reveal {
+            position: relative;
+            transform: translateY(150px);
+            opacity: 0;
+            transition: 1s all ease;
+        }
+        .reveal.active {
+            transform: translateY(0);
+            opacity: 1;
+        }
+    </style>
+</head>
+<body class="bg-gray-100">
+    <header class="bg-blue-500 text-white py-4">
+        <div class="container mx-auto px-4 flex justify-between items-center">
+            <h1 class="text-2xl font-semibold"><span class="destaque">Associação Unindo Força</span></h1>
+            <nav class="hidden md:block">
+                <ul class="flex space-x-6 nav-links">
+                    <li><a href="#quem-somos" class="hover:text-blue-200 transition duration-300">Quem Somos</a></li>
+                    <li><a href="#como-ajudamos" class="hover:text-blue-200 transition duration-300">Como Ajudamos</a></li>
+                    <li><a href="#impactos" class="hover:text-blue-200 transition duration-300">Impactos</a></li>
+                    <li><a href="#relatos" class="hover:text-blue-200 transition duration-300">Relatos</a></li>
+                    <li><a href="#doe-agora" class="hover:text-blue-200 transition duration-300">Doe Agora</a></li>
+                    <li><a href="#contato" class="hover:text-blue-200 transition duration-300">Contato</a></li>
+                </ul>
+            </nav>
+            <button id="menu-button" class="md:hidden text-white focus:outline-none" aria-label="Menu">
+                <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-6 h-6">
+                    <path stroke-linecap="round" stroke-linejoin="round" d="M3.75 6.75h16.5M3.75 12h16.5m-16.5 5.25h16.5" />
+                </svg>
+            </button>
+        </div>
+    </header>
+
+    <div id="mobile-menu" class="hidden fixed top-0 left-0 w-full h-full bg-gray-900 bg-opacity-90 z-50">
+        <div class="bg-gray-800 w-80 h-full absolute right-0 p-6">
+            <div class="flex justify-end mb-4">
+                <button id="close-menu-button" class="text-white focus:outline-none" aria-label="Close Menu">
+                    <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-6 h-6">
+                        <path stroke-linecap="round" stroke-linejoin="round" d="M6 18L18 6M6 6l12 12" />
+                    </svg>
+                </button>
+            </div>
+            <nav class="block">
+                <ul class="space-y-4">
+                    <li><a href="#quem-somos" class="block text-lg text-white hover:text-blue-200 transition duration-300">Quem Somos</a></li>
+                    <li><a href="#como-ajudamos" class="block text-lg text-white hover:text-blue-200 transition duration-300">Como Ajudamos</a></li>
+                    <li><a href="#impactos" class="block text-lg text-white hover:text-blue-200 transition duration-300">Impactos</a></li>
+                    <li><a href="#relatos" class="block text-lg text-white hover:text-blue-200 transition duration-300">Relatos</a></li>
+                    <li><a href="#doe-agora" class="block text-lg text-white hover:text-blue-200 transition duration-300">Doe Agora</a></li>
+                    <li><a href="#contato" class="block text-lg text-white hover:text-blue-200 transition duration-300">Contato</a></li>
+                </ul>
+            </nav>
+        </div>
+    </div>
+
+    <main class="container mx-auto px-4 py-8">
+
+        <section id="quem-somos" class="mb-12">
+            <h2 class="text-3xl font-semibold text-blue-600 mb-6 text-center animated-title">Quem Somos</h2>
+            <div class="grid grid-cols-1 md:grid-cols-1 gap-8 items-center">
+                <div>
+                    <p class="text-gray-700 leading-relaxed">
+                        A <span class="destaque">ASSOCIAÇÃO CULTURAL PARA DESENVOLVIMENTO EDUCACIONAL UNINDO FORÇA</span> nasceu com a missão de combater a fome e promover a inclusão social por meio da capacitação profissional na área da gastronomia.
+                    </p>
+                    <p class="text-gray-700 leading-relaxed mt-4">
+                        Com sede em São Paulo, nossa ONG serve diariamente 400 refeições de segunda a sábado, seguindo cardápios elaborados e supervisionados por nutricionistas.
+                    </p>
+                    <p class="text-gray-700 leading-relaxed mt-4">
+                        Nosso compromisso vai além do alimento no prato: promovemos educação nutricional, valorização da saúde e cuidado com o bem-estar social e emocional dos nossos beneficiários.
+                    </p>
+                </div>
+            </div>
+        </section>
+
+        <section id="como-ajudamos" class="mb-12">
+            <h2 class="text-3xl font-semibold text-blue-600 mb-6 text-center animated-title">Como Ajudamos</h2>
+            <p class="text-gray-700 leading-relaxed mb-6 text-center">
+                Nosso projeto é dividido em dois pilares principais:
+            </p>
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
+                <div class="bg-white rounded-lg shadow-md p-6 flex flex-col justify-between reveal">
+                    <h3 class="text-xl font-semibold text-blue-500 mb-4">Alimentação Diária</h3>
+                    <p class="text-gray-700 leading-relaxed mb-4">
+                        Servimos 400 refeições por dia com cardápios elaborados por nutricionistas, garantindo equilíbrio entre proteínas, carboidratos, vitaminas e minerais.
+                    </p>
+                    <p class="text-gray-700 leading-relaxed">
+                        Trabalhamos com alimentos frescos, doações e compras regulares em hortifrutis e mercados parceiros.
+                    </p>
+                </div>
+                <div class="bg-white rounded-lg shadow-md p-6 flex flex-col justify-between reveal">
+                    <h3 class="text-xl font-semibold text-blue-500 mb-4">Saúde e Bem-Estar</h3>
+                    <p class="text-gray-700 leading-relaxed mb-4">
+                        Nossos beneficiários relatam melhorias físicas e emocionais após o início do acompanhamento alimentar.
+                    </p>
+                    <p class="text-gray-700 leading-relaxed">
+                        Acreditamos que comer bem transforma vidas, e temos relatos diários de gratidão e superação.
+                    </p>
+                </div>
+            </div>
+        </section>
+
+        <section id="impactos" class="mb-12">
+            <h2 class="text-3xl font-semibold text-blue-600 mb-6 text-center animated-title">Impactos do Nosso Trabalho</h2>
+            <div class="bg-white rounded-lg shadow-md p-6 reveal">
+                <p class="text-gray-700 leading-relaxed">
+                    Através do nosso trabalho diário, observamos impactos significativos na vida dos nossos beneficiários. Além da melhoria na saúde física e emocional, proporcionamos um ambiente de acolhimento e esperança. Acreditamos que a alimentação adequada é um direito fundamental e trabalhamos incansavelmente para garantir que todos tenham acesso a refeições nutritivas e балансиadas.
+                </p>
+                <p class="text-gray-700 leading-relaxed mt-4">
+                    Nossos cursos de capacitação profissional também têm transformado a vida de muitos, oferecendo a oportunidade de um futuro melhor e mais digno. Acreditamos que investir nas pessoas é investir no desenvolvimento de toda a sociedade.
+                </p>
+            </div>
+        </section>
+
+        <section id="relatos" class="mb-12">
+            <h2 class="text-3xl font-semibold text-blue-600 mb-6 text-center animated-title">Relatos</h2>
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+                <div class="bg-white rounded-lg shadow-md p-6 reveal">
+                    <p class="text-gray-700 leading-relaxed italic mb-4">
+                        “Tem dias que essa é a única comida que eu tenho. A ajuda da ONG me dá força pra continuar lutando.”
+                    </p>
+                    <p class="font-semibold text-gray-800 text-right">— Maria D.</p>
+                </div>
+                <div class="bg-white rounded-lg shadow-md p-6 reveal">
+                    <p class="text-gray-700 leading-relaxed italic mb-4">
+                        “Antes eu me sentia invisível. Agora, sei que ainda tem esperança. A comida e o carinho que recebo me fazem acreditar de novo.”
+                    </p>
+                    <p class="font-semibold text-gray-800 text-right">— Lucas H.</p>
+                </div>
+            </div>
+        </section>
+
+        <section id="doe-agora" class="bg-blue-100 rounded-lg shadow-md p-6 mb-12">
+            <h2 class="text-3xl font-semibold text-blue-600 mb-6 text-center animated-title">Faça sua Doação</h2>
+            <p class="text-gray-700 leading-relaxed text-center mb-4">
+                Ajude-nos a continuar este trabalho transformador! Qualquer valor faz a diferença na vida de centenas de pessoas.
+            </p>
+            <p class="text-lg font-semibold text-blue-700 text-center mb-4">
+                Chave Pix: <span id="pix-key" class="font-normal text-gray-900">asso.unindoforca@gmail.com</span>
+                <button id="copy-pix-button" class="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded ml-2 transition duration-300 ease-in-out" onclick="copyPixKey()">
+                    Copiar Chave Pix
+                </button>
+            </p>
+            <p class="text-gray-700 leading-relaxed text-center">
+                Sua contribuição ajuda a manter refeições saudáveis, cursos e dignidade para quem mais precisa.
+            </p>
+        </section>
+
+        <section id="contato" class="mb-12">
+            <h2 class="text-3xl font-semibold text-blue-600 mb-6 text-center animated-title">Contato</h2>
+            <div class="bg-white rounded-lg shadow-md p-6 reveal">
+                <p class="text-gray-700 leading-relaxed mb-4">
+                    <strong>Endereço:</strong>
+                    <a href="https://www.google.com/maps/place/Avenida+Prof.+Osvaldo+de+Oliveira+112+Jardim+Helena+São+Paulo+SP" target="_blank" rel="noopener noreferrer" class="text-blue-600 hover:underline">Avenida Prof. Osvaldo de Oliveira, 112, Jardim Helena, São Paulo, SP</a><br>
+                    <strong>CEP:</strong> 08420-280 – São Paulo – SP
+                </p>
+                <p class="text-gray-700 leading-relaxed mb-4">
+                    Você também pode nos contatar através dos seguintes canais:
+                </p>
+                <div class="flex flex-wrap justify-center mt-4">
+                    
+                    <a  class="contact-button email-button" aria-label="Enviar e-mail">
+                        <i class="far fa-envelope"></i>asso.unindoforca@gmail.com
+                    </a>
+                    <a href="https://www.instagram.com/asso.unindoforcas/" target="_blank" rel="noopener noreferrer" class="contact-button instagram-button" aria-label="Instagram">
+                        <i class="fab fa-instagram"></i> Instagram
+                    </a>
+                    <a href="https://www.facebook.com/asso.unindoforcas/" target="_blank" rel="noopener noreferrer" class="contact-button facebook-button" aria-label="Facebook">
+                        <i class="fab fa-facebook-f"></i> Facebook
+                    </a>
+                    <a href="https://wa.me/551122178526" target="_blank" rel="noopener noreferrer" class="contact-button whatsapp-button" aria-label="WhatsApp">
+                        <i class="fab fa-whatsapp"></i> WhatsApp
+                    </a>
+                </div>
+                <p class="text-gray-700 leading-relaxed mt-4">
+                    <strong>Telefone:</strong> 11 2217-8526
+                </p>
+            </div>
+        </section>
+    </main>
+
+    <footer class="bg-gray-200 text-gray-700 py-4 text-center">
+        <p>© 2024 Associação Unindo Força. Todos os direitos reservados.</p>
+    </footer>
+
+    <script>
+        const menuButton = document.getElementById('menu-button');
+        const mobileMenu = document.getElementById('mobile-menu');
+        const closeMenuButton = document.getElementById('close-menu-button');
+        const mobileMenuLinks = mobileMenu.querySelectorAll('a');
+        const navLinks = document.querySelectorAll('.nav-links a');
+        const sections = document.querySelectorAll('section');
+
+        function toggleMobileMenu() {
+            mobileMenu.classList.toggle('hidden');
+        }
+
+        menuButton.addEventListener('click', toggleMobileMenu);
+        closeMenuButton.addEventListener('click', toggleMobileMenu);
+        mobileMenuLinks.forEach(link => {
+            link.addEventListener('click', toggleMobileMenu);
+        });
+
+        document.addEventListener('click', (event) => {
+            if (!mobileMenu.classList.contains('hidden') && !mobileMenu.contains(event.target) && event.target !== menuButton) {
+                toggleMobileMenu();
+            }
+        });
+
+        function updateActiveNavLink() {
+            let currentSectionId = '';
+            sections.forEach(section => {
+                const sectionTop = section.offsetTop;
+                const sectionHeight = section.clientHeight;
+                if (window.scrollY >= sectionTop - 100 && window.scrollY < sectionTop + sectionHeight - 100) {
+                    currentSectionId = section.getAttribute('id');
+                }
+            });
+
+            navLinks.forEach(link => {
+                link.classList.remove('active');
+                if (link.getAttribute('href').slice(1) === currentSectionId) {
+                    link.classList.add('active');
+                }
+            });
+        }
+
+        window.addEventListener('scroll', updateActiveNavLink);
+
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+
+                document.querySelector(this.getAttribute('href')).scrollIntoView({
+                    behavior: 'smooth'
+                });
+            });
+        });
+
+        function copyPixKey() {
+            const pixKey = document.getElementById("pix-key");
+            const tempInput = document.createElement("input");
+            tempInput.value = pixKey.textContent;
+            document.body.appendChild(tempInput);
+            tempInput.select();
+            tempInput.setSelectionRange(0, 99999); // Para dispositivos móveis
+            navigator.clipboard.writeText(tempInput.value);
+            document.body.removeChild(tempInput);
+            alert("Chave Pix copiada para a área de transferência!");
+        }
+
+        // Adiciona animação de clique aos botões de contato
+        const contactButtons = document.querySelectorAll('.contact-button');
+        contactButtons.forEach(button => {
+            button.addEventListener('click', function() {
+                this.classList.add('active');
+                setTimeout(() => {
+                    this.classList.remove('active');
+                }, 300); // Remove a classe após 300ms
+            });
+        });
+
+        // Função para adicionar a classe 'active' aos elementos quando estiverem visíveis na tela
+        function revealOnScroll() {
+            const reveals = document.querySelectorAll(".reveal");
+            for (let i = 0; i < reveals.length; i++) {
+                let windowHeight = window.innerHeight;
+                let elementTop = reveals[i].getBoundingClientRect().top;
+                let elementVisible = 150; // Altura em pixels para considerar o elemento visível
+
+                if (elementTop < windowHeight - elementVisible) {
+                    reveals[i].classList.add("active");
+                } else {
+                    reveals[i].classList.remove("active");
+                }
+            }
+        }
+
+        // Adiciona a classe 'active' aos títulos quando a página é carregada e durante a rolagem
+        window.addEventListener('load', () => {
+            const animatedTitles = document.querySelectorAll('.animated-title');
+            animatedTitles.forEach(title => {
+                title.classList.add('active');
+            });
+            revealOnScroll(); // Verifica a visibilidade dos elementos na carga da página
+        });
+        window.addEventListener("scroll", revealOnScroll);
+    </script>
+</body>
+</html>
